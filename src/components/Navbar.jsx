@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
@@ -55,7 +55,18 @@ const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            <Box
+                  component="img"
+                  sx={{
+                    height: 50,
+                    // width: 350,
+                    // maxHeight: { xs: 233, md: 167 },
+                    // maxWidth: { xs: 350, md: 250 },
+                  }}
+                  alt="The house from the offer."
+                  // src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
+                  src="../../logo.png"
+                />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

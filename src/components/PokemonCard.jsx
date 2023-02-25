@@ -14,7 +14,7 @@ const PokemonCard = ({name, api}) => {
 
   useEffect (() => {
     const getPokemons = async () => {
-      setPokeinfo(await axios.get("https://pokeapi.co/api/v2/pokemon"))
+      setPokeinfo(await axios.get(api))
     }
     getPokemons()
   },[])
@@ -33,8 +33,8 @@ const PokemonCard = ({name, api}) => {
           <CardMedia
             component="img"
             height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
-            alt="green iguana"
+            image={ pokeinfo?.data?.sprites?.front_default }
+            alt={ name }
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">

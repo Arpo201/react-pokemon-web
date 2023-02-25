@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
 import axios from "axios"
 import PokemonCard from "../components/PokemonCard"
 
@@ -25,9 +26,13 @@ const Pokemonpage = () => {
 
   return (
     <>
-      {isRender && pokemons?.data?.results?.map((poke, index) => (
-        <PokemonCard name={poke.name} api={poke.url} />
-      ))}
+      <Grid2 container spacing={4}>
+        {isRender && pokemons?.data?.results?.map((poke, index) => (
+          <Grid2 md={4}>
+            <PokemonCard name={poke.name} api={poke.url} />
+          </Grid2>
+        ))}
+      </Grid2>
     </>
   )
 }

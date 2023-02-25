@@ -22,7 +22,7 @@ const PokemonCard = ({name, api}) => {
   useEffect (() => {
     // null, undefined, '' | if have data
     if(!!pokeinfo){ 
-      console.log(pokeinfo)
+      // console.log(pokeinfo)
       setIsRender(true)
     }
   },[pokeinfo])
@@ -32,17 +32,17 @@ const PokemonCard = ({name, api}) => {
         <CardActionArea>
           <CardMedia
             component="img"
-            height="140"
+            height="300"
             image={ pokeinfo?.data?.sprites?.front_default }
             alt={ name }
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h4" component="div" textAlign={"center"}>
               { name }
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            {/* <Typography variant="body2" color="text.secondary">
               { api }
-            </Typography>
+            </Typography> */}
           </CardContent>
         </CardActionArea>
       </Card>

@@ -10,7 +10,11 @@ const Pokemonpage = () => {
   useEffect (() => {
     // fetch("shiba.com")) // test = a,b,c
     const getPokemons = async () => {
-      setPokemons(await axios.get("https://pokeapi.co/api/v2/pokemon"))
+      const params = { 
+        offset: 0,
+        limit: 50
+      }
+      setPokemons(await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=50"))
     }
     getPokemons()
   },[])

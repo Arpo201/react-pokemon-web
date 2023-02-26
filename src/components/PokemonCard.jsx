@@ -13,11 +13,11 @@ const PokemonCard = ({name, api}) => {
   const [isRender, setIsRender] = useState(false)
 
   useEffect (() => {
-    const getPokemons = async () => {
+    const getData = async () => {
       setPokeinfo(await axios.get(api))
     }
-    getPokemons()
-  },[])
+    getData()
+  },[api])
 
   useEffect (() => {
     // null, undefined, '' | if have data

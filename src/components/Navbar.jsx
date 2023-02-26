@@ -13,8 +13,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Pokemons', 'Pricing', 'Blog'];
+const settings = ['Profile', 'Account', 'Logout'];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" color="warning">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
@@ -63,7 +63,7 @@ const Navbar = () => {
                     // maxHeight: { xs: 233, md: 167 },
                     // maxWidth: { xs: 350, md: 250 },
                   }}
-                  alt="The house from the offer."
+                  alt="Logo"
                   // src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
                   src="../../logo.png"
                 />

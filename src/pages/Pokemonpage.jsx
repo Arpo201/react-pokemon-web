@@ -1,43 +1,42 @@
-import { useEffect, useState } from "react"
-import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
-import axios from "axios"
-import PokemonCard from "../components/PokemonCard"
+import { useEffect, useState } from 'react';
+import Pagination from '@mui/material/Pagination'
+import Stack from '@mui/material/Stack'
+
+import PokemonCardsBox from "../components/PokemonCardsBox";
+import axios from 'axios';
 
 const Pokemonpage = () => {
-  const [pokemons, setPokemons] = useState({})
+  const [pokeNum, setPokeNum] = useState(0)
+  const [pokeOffset, setPokeOffset ] = useState(0)
+  const pokeLimit = 12
   const [isRender, setIsRender] = useState(false)
-
+  const [page, setPage] = useState(1)
+  const [pageCount, setPageCount] = useState(0)
+  const handleChange = (event, value) => {
+    setPage(value)
+    setPokeOffset((value-1)*pokeLimit)
+  }
+  
   useEffect (() => {
-    // fetch("shiba.com")) // test = a,b,c
-    const getPokemons = async () => {
-      const params = { 
-        offset: 0,
-        limit: 50
-      }
-      setPokemons(await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=50"))
+    const getData = async () => {
+      setPokeNum((await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1")).data.count)
     }
-    getPokemons()
+    getData()
   },[])
 
   useEffect (() => {
-    // null, undefined, ''
-    // ข้อมูลมีค่า
-    if(!!pokemons){ 
-      console.log(pokemons)
+    if(!!pokeNum){ 
+      setPageCount(Math.ceil(pokeNum/pokeLimit))
       setIsRender(true)
     }
-  },[pokemons])
+  },[pokeNum])
 
-  return (
-    <>
-      <Grid2 container spacing={4}>
-        {isRender && pokemons?.data?.results?.map((poke, index) => (
-          <Grid2 md={4}>
-            <PokemonCard name={poke.name} api={poke.url} />
-          </Grid2>
-        ))}
-      </Grid2>
-    </>
+  if (isRender) return (
+    <Stack spacing={3}>
+      <Pagination count={pageCount} page={page} onChange={handleChange} color="primary" />
+      <PokemonCardsBox offset={pokeOffset} limit={pokeLimit} />
+      <Pagination count={pageCount} page={page} onChange={handleChange} color="primary" />
+    </Stack> 
   )
 }
 
